@@ -16,13 +16,13 @@ namespace WebApp.Infrastructure
         /// <summary>
         /// file path of the flat file
         /// </summary>
-        private string filePath;
+        private string _filePath;
 
         #region Ctor
 
         public RecordRepository(string filePathParam)
         {
-            this.filePath = (HttpContext.Current != null) ? HttpContext.Current.Server.MapPath(filePathParam) : filePathParam;
+            this._filePath = (HttpContext.Current != null) ? HttpContext.Current.Server.MapPath(filePathParam) : filePathParam;
         }
 
         #endregion
@@ -31,7 +31,7 @@ namespace WebApp.Infrastructure
         {
             try
             {
-                using (StreamReader sr = File.OpenText(this.filePath))
+                using (StreamReader sr = File.OpenText(this._filePath))
                 {
                     string result = sr.ReadToEnd();
                     return result;
@@ -56,11 +56,11 @@ namespace WebApp.Infrastructure
         public string ReadRecords( string pattern)
         {
             if (string.IsNullOrEmpty(pattern))
-                return ReadRecords(filePath);
+                return ReadRecords(_filePath);
 
             StringBuilder sb = new StringBuilder();
 
-            using (StreamReader sr = File.OpenText(this.filePath))
+            using (StreamReader sr = File.OpenText(this._filePath))
             {
                 string s = String.Empty;
                 while ((s = sr.ReadLine()) != null)
@@ -87,17 +87,17 @@ namespace WebApp.Infrastructure
             if (string.IsNullOrEmpty(recordValue))
                 return success;
 
-            if (!File.Exists(this.filePath))
+            if (!File.Exists(this._filePath))
             {
                 // Create a file to write to.
-                using (StreamWriter sw = File.CreateText(filePath))
+                using (StreamWriter sw = File.CreateText(_filePath))
                 {
                     sw.WriteLine(recordValue);
                     success = true;
                 }
             }
 
-            using (StreamWriter sw = File.AppendText(filePath))
+            using (StreamWriter sw = File.AppendText(_filePath))
             {
                 sw.WriteLine(recordValue);
                 success = true;

@@ -37,7 +37,7 @@ namespace Web.Api.Controllers
                 // passange name List 
                 var pnl = from r in result
                           group r by r.LocatorTag into bylocatorTagGroup
-                          select new { recordlocator = bylocatorTagGroup.Key, passengers = bylocatorTagGroup.Select(x => x.Passenger) };
+                          select new LocatorRecord { RecordTag = bylocatorTagGroup.Key, Passengers = bylocatorTagGroup.Select(x => x.Passenger) };
 
                 return Ok(pnl);
             }

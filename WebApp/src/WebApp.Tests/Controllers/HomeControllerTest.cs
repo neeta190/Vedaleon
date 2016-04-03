@@ -14,16 +14,24 @@ namespace WebApp.Tests.Controllers
     [TestClass]
     public class HomeControllerTest
     {
-        private IRecordRepository getRecordRepositoryObject()
+       
+        #region Private Members
+
+        private IRecordRepository _recordRepository = null;
+
+        #endregion
+
+        [TestInitialize]
+        public void SetUp()
         {
-            return new RecordRepository(@"../../InputSource/SampleTestInput.txt");
+            _recordRepository = new RecordRepository(@"../../InputSource/SampleTestInput.txt");
         }
 
         [TestMethod]
         public void Check_For_Records_In_PassengerList()
         {
             // Arrange
-            HomeController controller = new HomeController(getRecordRepositoryObject());
+            HomeController controller = new HomeController(_recordRepository);
 
             // Act
             ViewResult result = controller.Index().Result as ViewResult;
@@ -38,7 +46,7 @@ namespace WebApp.Tests.Controllers
         public void Add_with_Correct_Values()
         {
             // Arrange
-            HomeController controller = new HomeController(getRecordRepositoryObject());
+            HomeController controller = new HomeController(_recordRepository);
 
             // Act
             ViewResult result = controller.Add("1JAIME/KARENMRS-M2 .L/LVKBTB") as ViewResult;
@@ -51,7 +59,7 @@ namespace WebApp.Tests.Controllers
         public void Add_with_SpecialCharcter_Values()
         {
             // Arrange
-            HomeController controller = new HomeController(getRecordRepositoryObject());
+            HomeController controller = new HomeController(_recordRepository);
 
             // Act
             ViewResult result = controller.Add("1JAIME/ATKINS@-M2 .L/LVKBTB") as ViewResult;
@@ -64,7 +72,7 @@ namespace WebApp.Tests.Controllers
         public void Search_with_WildCard()
         {
             // Arrange
-            HomeController controller = new HomeController(getRecordRepositoryObject());
+            HomeController controller = new HomeController(_recordRepository);
 
             // Act
             ViewResult result = controller.Search("*.*").Result as ViewResult;
@@ -77,7 +85,7 @@ namespace WebApp.Tests.Controllers
         public void Search_for_Specfic_Record()
         {
             // Arrange
-            HomeController controller = new HomeController(getRecordRepositoryObject());
+            HomeController controller = new HomeController(_recordRepository);
 
             // Act
             ViewResult result = controller.Search("LVGVUP").Result as ViewResult;

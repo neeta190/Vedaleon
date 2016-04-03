@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace WebApp.Models
+namespace Web.Api.Models
 {
-    public class PassengerRecord
+    public class LocatorRecord
     {
         public string RecordTag { get; set; }
 
-        public List<string> Passengers { get; set; }
+        public IEnumerable<string> Passengers { get; set; }
     }
 }

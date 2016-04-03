@@ -15,14 +15,14 @@ namespace WebApp.Controllers
 {
     public class HomeController : Controller
     {
-        public int PageSize = 4;
-        private IRecordRepository recordRepository = null;
+        private int _pageSize = 4;
+        private IRecordRepository _recordRepository = null;
 
         #region Ctor
 
         public HomeController(IRecordRepository recordRepositoryParam)
         {
-            recordRepository = recordRepositoryParam;
+            _recordRepository = recordRepositoryParam;
         }
 
         #endregion
@@ -34,17 +34,17 @@ namespace WebApp.Controllers
         [HttpGet]
         public async Task<ActionResult> Index(int page = 1)
         {
-            var value = recordRepository.ReadRecords();
+            var value = _recordRepository.ReadRecords();
             var passengerRecords = await ParsePassengerRecords(value);
             if (passengerRecords != null && passengerRecords.Any())
             {
                 PassengerListViewModel model = new PassengerListViewModel
                 {
-                    PassengerRecords = passengerRecords.Skip((page - 1) * PageSize).Take(PageSize),
+                    PassengerRecords = passengerRecords.Skip((page - 1) * _pageSize).Take(_pageSize),
                     PagingInfo = new PagingInfo
                     {
                         CurrentPage = page,
-                        ItemsPerPage = PageSize,
+                        ItemsPerPage = _pageSize,
                         TotalItems = passengerRecords.Count()
                     }
                 };
@@ -74,7 +74,7 @@ namespace WebApp.Controllers
             {
                 if (Regex.IsMatch(recordValue, sPattern))
                 {
-                    ViewBag.Success = recordRepository.WriteRecord(recordValue);
+                    ViewBag.Success = _recordRepository.WriteRecord(recordValue);
                 }
                 else
                 {
@@ -90,7 +90,7 @@ namespace WebApp.Controllers
             if (!string.IsNullOrWhiteSpace(searchTerm))
             {
                 var model = new List<PassengerRecord>(); // empty View model
-                var value = recordRepository.ReadRecords(searchTerm);
+                var value = _recordRepository.ReadRecords(searchTerm);
 
                 if (!string.IsNullOrEmpty(value))
                     model = await ParsePassengerRecords(value);
