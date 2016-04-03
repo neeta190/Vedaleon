@@ -9,6 +9,8 @@ namespace Web.Api.Common.ErrorHandling
 {
     /// <summary>
     /// responsible for constructing the SimpleErrorResult instances.
+    /// custom exception handler, used to replace the ASP.NET Web API default exception handler
+    /// allow customization the HTTP response sent when an unhandled application exception
     /// </summary>
     public class GlobalExceptionHandler : ExceptionHandler
     {

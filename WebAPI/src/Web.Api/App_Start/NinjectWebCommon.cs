@@ -8,8 +8,13 @@ using Ninject.Web.Common;
 using WebActivatorEx;
 using Web.Api;
 
+
+
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(NinjectWebCommon), "Start")]
 [assembly: ApplicationShutdownMethod(typeof(NinjectWebCommon), "Stop")]
+/// <summary>
+/// class make sure DI container is created during application start-up and remains 
+/// </summary>
 namespace Web.Api
 {
     public static class NinjectWebCommon

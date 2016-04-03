@@ -117,11 +117,9 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Common\Constants.cs" />
-    <Compile Include="Common\DateTimeAdapter.cs" />
     <Compile Include="Common\ErrorHandling\GlobalExceptionHandler.cs" />
     <Compile Include="Common\ErrorHandling\SimpleErrorResult.cs" />
     <Compile Include="Common\ErrorHandling\SimpleExceptionLogger.cs" />
-    <Compile Include="Common\IDateTime.cs" />
     <Compile Include="Common\Logging\ILogManager.cs" />
     <Compile Include="Common\Logging\LogManagerAdapter.cs" />
     <Compile Include="Common\SimpleTraceWriter.cs" />

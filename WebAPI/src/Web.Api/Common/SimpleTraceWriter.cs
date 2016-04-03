@@ -6,6 +6,10 @@ using Web.Api.Common.Logging;
 
 namespace Web.Api.Common
 {
+    /// <summary>
+    /// custom trace writer that plugs into the ASP.NET Web API 
+    /// tracing infrastructure and writes to log4net.
+    /// </summary>
     public class SimpleTraceWriter : ITraceWriter
     {
         private readonly ILog _log;

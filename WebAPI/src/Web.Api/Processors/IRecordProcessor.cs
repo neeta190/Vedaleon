@@ -7,6 +7,7 @@ using Web.Api.Models;
 
 namespace Web.Api.Processors
 {
+    
     public interface IRecordProcessor
     {
         IEnumerable<Record> Parse(string value);

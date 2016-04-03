@@ -7,6 +7,9 @@ using Ninject;
 
 namespace Web.Api
 {
+    /// <summary>
+    /// tells ASP.NET Web API to ask Ninject for all dependencies required at run time
+    /// </summary>
     public sealed class NinjectDependencyResolver : IDependencyResolver
     {
         private readonly IKernel _container;

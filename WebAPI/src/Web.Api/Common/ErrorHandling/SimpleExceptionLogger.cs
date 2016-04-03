@@ -8,6 +8,9 @@ using Web.Api.Common.Logging;
 
 namespace Web.Api.Common.ErrorHandling
 {
+    /// <summary>
+    /// responsibility is to log exceptions.
+    /// </summary>
     public class SimpleExceptionLogger : ExceptionLogger
     {
         private readonly ILog _log;

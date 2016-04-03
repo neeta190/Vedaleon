@@ -11,6 +11,9 @@ using Ninject.Web.Common;
 
 namespace Web.Api
 {
+    /// <summary>
+    /// bind or relate interfaces to concrete implementations
+    /// </summary>
     public class NinjectConfigurator
     {
         public void Configure(IKernel container)
@@ -20,13 +23,12 @@ namespace Web.Api
         private void AddBindings(IKernel container)
         {
             ConfigureLog4net(container);
-            container.Bind<IDateTime>().To<DateTimeAdapter>().InSingletonScope();
             container.Bind<IRecordProcessor>().To<RecordProcessor>().InRequestScope();
         }
-
+       
         private void ConfigureLog4net(IKernel container)
         {
-            XmlConfigurator.Configure();
+            XmlConfigurator.Configure(); // call XmlConfigurator.Configure to configure log4net 
             var logManager = new LogManagerAdapter();
             container.Bind<ILogManager>().ToConstant(logManager);
         }

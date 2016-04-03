@@ -8,6 +8,9 @@ using System.Web.Http;
 
 namespace Web.Api.Tests
 {
+    /// <summary>
+    /// utility class
+    /// </summary>
     public static class HttpRequestMessageFactory
     {
         public static HttpRequestMessage CreateRequestMessage(

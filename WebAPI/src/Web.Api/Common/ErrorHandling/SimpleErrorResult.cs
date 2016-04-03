@@ -6,6 +6,9 @@ using System.Web.Http;
 
 namespace Web.Api.Common.ErrorHandling
 {
+    /// <summary>
+    /// IHttpActionResult implementation for adding result information to the exception context.
+    /// </summary>
     public class SimpleErrorResult : IHttpActionResult
     {
         private readonly string _errorMessage;

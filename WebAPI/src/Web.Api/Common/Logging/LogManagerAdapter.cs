@@ -6,6 +6,9 @@ using System.Web;
 
 namespace Web.Api.Common.Logging
 {
+    /// <summary>
+    /// adapter class for logging
+    /// </summary>
     public class LogManagerAdapter : ILogManager
     {
         public ILog GetLog(Type typeAssociatedWithRequestedLog)
