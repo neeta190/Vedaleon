@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
+using System.Web.Mvc;
 using System.Web.Routing;
 using Web.Api.Common;
 using Web.Api.Common.Logging;
@@ -13,7 +14,10 @@ namespace Web.Api
     {
         protected void Application_Start()
         {
+            // Add this code, if not present.
+            AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
 
         protected void Application_Error()

@@ -7,6 +7,9 @@ using System.Web.Http.Dependencies;
 
 namespace Web.Api.Common
 {
+    /// <summary>
+    /// provide access to dependencies managed by the IDependencyResolver
+    /// </summary>
     public class WebContainerManager
     {
         public static IDependencyResolver GetDependencyResolver()

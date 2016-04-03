@@ -5,29 +5,45 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Description;
 using Web.Api.Models;
 using Web.Api.Processors;
 
 namespace Web.Api.Controllers
 {
+    /// <summary>
+    /// Passenger  web api
+    /// </summary>
     [RoutePrefixAttribute("api/passenger")]
     public class PassengerController : ApiController
     {
 
         private readonly IRecordProcessor _recordProcessor;
 
+        /// <summary>
+        /// ctor
+        /// </summary>
+        /// <param name="recordProcessor"></param>
         public PassengerController(IRecordProcessor recordProcessor)
         {
             _recordProcessor = recordProcessor;
         }
-        
-        // GET: api/Passenger
+
+        /// <summary>
+        /// Dummy method for checking the API working status
+        /// </summary>
+        /// <returns></returns>
+        [ApiExplorerSettings(IgnoreApi = true)]
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
         }
 
-        // POST: api/Passenger
+        /// <summary>
+        /// API accepts text in prespecfied format as input and returns a list of record Locators and the passengers associated with them. 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         public async Task<IHttpActionResult> Post(HttpRequestMessage request)
         {
             var value = await request.Content.ReadAsStringAsync();
