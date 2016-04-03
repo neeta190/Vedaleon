@@ -1,0 +1,59 @@
+﻿@{
+    ViewBag.Title = "Add Record";
+}
+
+<div class="page-header">
+    <h2>Add Passenger Record</h2>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Enter Details Below</h3>
+    </div>
+    <div class="panel-body">
+        <div class="col-md-6">
+            @using (Html.BeginForm("Add", "Home", FormMethod.Post, new { role = "form", Id = "addRecord" }))
+            {
+                <div class="form-group">
+                    <label for="record" class="control-label">Record Details:</label>
+                    <input type="text" class="form-control" required="required" id="record" name="recordValue" />
+                </div>
+                <input type="submit" id="btnSubmit" class="btn btn-info" value="Create">
+            }
+        </div>
+        <div class="col-md-6">
+            <div class="alert alert-info">
+                <strong> Information: </strong>
+                <p class="text-info"> Allowed special characters <strong><kbd>/</kbd> <kbd>-</kbd></strong></p>
+                <p class="text-info">Alphanumeric with whitspace are allowed.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (ViewBag.Success != null)
+{
+    if (ViewBag.Success)
+    {
+        <div class="alert alert-success">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Success!</strong> Record inserted successfully!
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-danger">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Danger!</strong> Insertion failure occurred. Try Again!
+        </div>
+    }
+}
+
+@if (ViewBag.InvalidInput != null && ViewBag.InvalidInput)
+{
+    <div class="alert alert-danger">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Danger!</strong> Invaild characters in input. Try Again!
+    </div>
+}
+

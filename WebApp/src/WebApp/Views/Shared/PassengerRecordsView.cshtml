@@ -1,0 +1,23 @@
+﻿@using WebApp.Models;
+
+@model IEnumerable<PassengerRecord>
+
+@foreach (var pRecord in Model)
+{
+    <div class="row">
+        <div class="col-md-12">
+            <h3>@pRecord.RecordLocator</h3>
+            @if (pRecord.Passengers.Any())
+            {
+                foreach (var item in pRecord.Passengers)
+                {
+                    <div class="row">
+                        <div class="col-md-offset-1">
+                            <h4>@item</h4>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+}

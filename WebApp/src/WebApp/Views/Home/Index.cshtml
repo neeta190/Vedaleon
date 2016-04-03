@@ -1,0 +1,32 @@
+﻿@using WebApp.Models;
+@using WebApp.HtmlHelpers;
+
+@model PassengerListViewModel
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="page-header">
+    <h2>Passenger List</h2>
+</div>
+
+@if (Model != null && 
+    Model.PassengerRecords != null && 
+    Model.PassengerRecords.Any())
+{
+    <div class="grid">
+        @Html.Partial("PassengerRecordsView", Model.PassengerRecords)
+    </div>
+    <div>
+        @Html.PageLinks(Model.PagingInfo, x => Url.Action("Index", new { page = x }))
+    </div>
+}
+else
+{
+    <div class="alert alert-info">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Info!</strong> No passenger record availble!
+    </div>
+}
+
+
