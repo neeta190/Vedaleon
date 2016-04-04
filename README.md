@@ -52,12 +52,6 @@ The following section breifs about setting and running code from user local mach
 * Log4net is used for logging inside the Web API.
 * Wild card search implementation is based on following resource http://www.henrikbrinch.dk/Blog/2013/03/07/Wildcard-Matching-In-C-Using-Regular-Expressions
 * Web Api Help pages are generated using Microsoft.AspNet.WebApi.HelpPage package
-* 
-
-### Web API
-
-### Web API
-Depending on the size of the project, if it is small and simple enough the reference docs can be added to the README. For medium size to larger projects it is important to at least provide a link to where the API reference docs live.
 
 ## Tests
 
