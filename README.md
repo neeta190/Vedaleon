@@ -67,5 +67,7 @@ Both the Web API & Web App solutions has Test projects for testing the basic ope
 * The app.config file needs to aptly set "WebAPIBaseUrl" to point the Web API
 * The Add/Search/List operation are performed on a local "SampleTestInput.txt" ( content file) residing inside the "InputSource" folder of the project. 
 
+### Devlopment enviornment 
+* Microsoft Visual Studio Community Edition
 
 And that's all folks! :+1:
