@@ -38,9 +38,6 @@ The following section breifs about setting and running code from user local mach
 * Web App runs on a file named "SampleInput.txt" (Content file) residing inside the "InputSource"  folder ( part of .csProj file )
 	```
 	 1ARNOLD/NIGELMR-B2 .L/LVGVUP
-     .R/TKNE HK1 9244501028078/1
-     1ATKINSON/KARENMRS-M2 .L/LVKBTB
-     .R/TKNE HK1 9244501227666/1
 	```
 * Web App "web.config" file has the following key defined and should aptly point at the Web API
   ```
